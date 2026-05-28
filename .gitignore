@@ -1,0 +1,4 @@
+panic_dashboard/__pycache__/
+panic_dashboard/pages/__pycache__/
+panic_dashboard/utils/__pycache__/
+*.pyc
