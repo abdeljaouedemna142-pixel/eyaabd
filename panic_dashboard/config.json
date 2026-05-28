@@ -1,0 +1,148 @@
+{
+  "app": {
+    "title": "PanicGuard AI",
+    "version": "1.0.0",
+    "author": "Master Thesis Research Project",
+    "description": "Panic attack risk detection using BiLSTM + Attention on wearable data",
+    "institution": "Research University",
+    "year": 2024,
+    "contact": "research@university.edu"
+  },
+  "model": {
+    "path": "models/best_model_B.keras",
+    "input_days": 7,
+    "input_features": 24,
+    "threshold": 0.5,
+    "architecture": "BiLSTM + Attention",
+    "optimizer": "Adam",
+    "learning_rate": 0.0003,
+    "loss": "binary_crossentropy",
+    "validation": "LOSO (Leave-One-Subject-Out)"
+  },
+  "performance": {
+    "roc_auc_mean": 0.4902,
+    "roc_auc_std": 0.2082,
+    "pr_auc_mean": 0.2238,
+    "pr_auc_std": 0.2941,
+    "f1_mean": 0.2943,
+    "f1_std": 0.2874,
+    "recall_mean": 0.8092,
+    "recall_std": 0.3087
+  },
+  "risk_levels": {
+    "normal": {
+      "min": 0.0,
+      "max": 0.30,
+      "label": "Normal",
+      "color": "#2ecc71",
+      "description": "No significant risk detected"
+    },
+    "elevated": {
+      "min": 0.30,
+      "max": 0.60,
+      "label": "Elevated Risk",
+      "color": "#f39c12",
+      "description": "Monitoring recommended - consult healthcare provider if persistent"
+    },
+    "critical": {
+      "min": 0.60,
+      "max": 1.0,
+      "label": "Critical Risk",
+      "color": "#e74c3c",
+      "description": "High risk detected - immediate clinical attention recommended"
+    }
+  },
+  "notifications": {
+    "smtp": {
+      "server": "",
+      "port": 587,
+      "sender_email": "",
+      "sender_password": "",
+      "use_tls": true
+    },
+    "telegram": {
+      "bot_token": "",
+      "chat_id": ""
+    },
+    "alert_threshold": 0.60,
+    "cooldown_minutes": 30
+  },
+  "features": [
+    "heart_rate",
+    "resting_heart_rate",
+    "hrv",
+    "spo2",
+    "sleep_duration",
+    "sleep_quality",
+    "deep_sleep",
+    "rem_sleep",
+    "steps",
+    "activity_level",
+    "calories",
+    "distance",
+    "stress_score",
+    "cortisol_proxy",
+    "movement_intensity",
+    "sedentary_time",
+    "skin_temperature",
+    "galvanic_skin_response",
+    "breathing_rate",
+    "systolic_bp",
+    "diastolic_bp",
+    "mood_score",
+    "fatigue_level",
+    "anxiety_proxy"
+  ],
+  "feature_descriptions": {
+    "heart_rate": "Average heart rate (bpm)",
+    "resting_heart_rate": "Resting heart rate (bpm)",
+    "hrv": "Heart rate variability (ms)",
+    "spo2": "Blood oxygen saturation (%)",
+    "sleep_duration": "Total sleep duration (hours)",
+    "sleep_quality": "Sleep quality score (0-100)",
+    "deep_sleep": "Deep sleep duration (hours)",
+    "rem_sleep": "REM sleep duration (hours)",
+    "steps": "Daily step count",
+    "activity_level": "Physical activity intensity (0-100)",
+    "calories": "Daily calories burned (kcal)",
+    "distance": "Daily distance traveled (km)",
+    "stress_score": "Physiological stress score (0-100)",
+    "cortisol_proxy": "Estimated cortisol level proxy (0-100)",
+    "movement_intensity": "Average movement intensity (0-100)",
+    "sedentary_time": "Sedentary time (hours)",
+    "skin_temperature": "Skin temperature (°C)",
+    "galvanic_skin_response": "Galvanic skin response (μS)",
+    "breathing_rate": "Breathing rate (breaths/min)",
+    "systolic_bp": "Systolic blood pressure (mmHg)",
+    "diastolic_bp": "Diastolic blood pressure (mmHg)",
+    "mood_score": "Self-reported mood score (0-100)",
+    "fatigue_level": "Self-reported fatigue level (0-100)",
+    "anxiety_proxy": "Physiological anxiety proxy (0-100)"
+  },
+  "normal_ranges": {
+    "heart_rate": [60, 100],
+    "resting_heart_rate": [50, 80],
+    "hrv": [20, 80],
+    "spo2": [95, 100],
+    "sleep_duration": [7, 9],
+    "sleep_quality": [60, 100],
+    "deep_sleep": [1.0, 2.5],
+    "rem_sleep": [1.5, 2.5],
+    "steps": [7000, 12000],
+    "activity_level": [40, 80],
+    "calories": [1800, 2500],
+    "distance": [5, 12],
+    "stress_score": [0, 35],
+    "cortisol_proxy": [10, 45],
+    "movement_intensity": [30, 70],
+    "sedentary_time": [6, 10],
+    "skin_temperature": [33.5, 36.5],
+    "galvanic_skin_response": [1.0, 10.0],
+    "breathing_rate": [12, 20],
+    "systolic_bp": [90, 130],
+    "diastolic_bp": [60, 85],
+    "mood_score": [55, 100],
+    "fatigue_level": [0, 40],
+    "anxiety_proxy": [0, 35]
+  }
+}
